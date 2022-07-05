@@ -43,15 +43,32 @@ import org.xml.sax.SAXParseException;
 /**
  * @author Clinton Begin
  * @author Kazuki Shimizu
+ * @description 基于 Java XPath 解析器，用于解析 MyBatis mybatis-config.xml 和 **Mapper.xml 等 XML 配置文件
  */
 public class XPathParser {
 
+  /**
+   * XML Document 对象
+   */
   private final Document document;
+  /**
+   * 是否校验
+   */
   private boolean validation;
+  /**
+   * XML 实体解析器
+   */
   private EntityResolver entityResolver;
+  /**
+   *  变量 Properties 对象
+   */
   private Properties variables;
+  /**
+   * Java XPath 对象
+   */
   private XPath xpath;
 
+  //创建Document对象
   public XPathParser(String xml) {
     commonConstructor(false, null, null);
     this.document = createDocument(new InputSource(new StringReader(xml)));
@@ -112,6 +129,14 @@ public class XPathParser {
     this.document = document;
   }
 
+  /**
+   * 构造 XPathParser 对象
+   *
+   * @param xml XML 文件地址
+   * @param validation 是否校验 XML
+   * @param variables 变量 Properties 对象
+   * @param entityResolver XML 实体解析器
+   */
   public XPathParser(String xml, boolean validation, Properties variables, EntityResolver entityResolver) {
     commonConstructor(validation, variables, entityResolver);
     this.document = createDocument(new InputSource(new StringReader(xml)));
@@ -227,6 +252,13 @@ public class XPathParser {
     }
   }
 
+
+  /**
+   * 创建 Document 对象
+   *
+   * @param inputSource XML 的 InputSource 对象
+   * @return Document 对象
+   */
   private Document createDocument(InputSource inputSource) {
     // important: this must only be called AFTER common constructor
     try {
