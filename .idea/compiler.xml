@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="mybatis-test" />
         <module name="mybatis-3.5.3" />
+        <module name="mybatis_quickStarter" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8" />

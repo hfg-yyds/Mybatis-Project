@@ -39,6 +39,12 @@ import java.util.concurrent.locks.ReadWriteLock;
  * @author Clinton Begin
  */
 
+/**
+ * 用于缓存提供程序的SPI。
+ * 将为每个名称空间创建一个缓存实例。
+ * 缓存实现必须有一个接收缓存id作为String参数的构造函数。
+ * MyBatis将把名称空间作为id传递给构造函数。
+ */
 public interface Cache {
 
   /**

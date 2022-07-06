@@ -28,6 +28,9 @@ public class PerpetualCache implements Cache {
 
   private final String id;
 
+  /**
+   * 每一个Sqlsession都会存一个这样的HashMap
+   */
   private Map<Object, Object> cache = new HashMap<>();
 
   public PerpetualCache(String id) {
